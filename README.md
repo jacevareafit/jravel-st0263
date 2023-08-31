@@ -10,6 +10,9 @@ Entonces tenemos un cliente que envia peticiones a un api gateway que va a dirig
 
 1.1 Se implemento toda la arquitectura en AWS estableciendo la comunicacion de cada nodo propuesto en el diseño, a su vez se implemento el microservicio list_files y se aseguro el correcto funcionamiento y comunicacion de este con el apigateway por medio ded los tipos de comunicacion propuesto. 
 
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/5b21ed21-6155-4684-b547-224a5f159709)
+
+
 1.2 De momento falta implementar el microservicio find_files, que esta fallando por un error en la logica.
 
 2 Para la arquitectura en AWS en primer lugar se crearon los security groups para cada instancia, donde abrimos los puertos por los que se comunican los protocolos de cada nodo, despues se crearon las instancias que representan cada servicio del reto y por ultimo se asignaron las ips elasticas a cada una.
