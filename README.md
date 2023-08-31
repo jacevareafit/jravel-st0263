@@ -53,10 +53,19 @@ PORT = 80
 
 ips elasticas
 
-API-GATEWAY: 18.213.158.32
-mom: 54.163.166.84
-Servicio1: 3.225.162.204
+API-GATEWAY: 18.213.158.32 - 
+mom: 54.163.166.84 - 
+Servicio1: 3.225.162.204 - 
 Servicio2: 3.90.130.81
+
+Demostracion:
+
+Referencias:
+Remote procedure call (RPC)
+https://www.rabbitmq.com/tutorials/tutorial-six-python.html
+Flask
+https://flask.palletsprojects.com/en/2.3.x/
+
 
 
 
