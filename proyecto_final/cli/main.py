@@ -111,5 +111,6 @@ class CLIInterface:
 
 
 if __name__ == "__main__":
-    cli = CLIInterface("localhost:50050")
+    namenode = os.getenv("namenode")
+    cli = CLIInterface(namenode)
     cli.interactuar_cli()

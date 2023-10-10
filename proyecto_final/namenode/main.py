@@ -8,8 +8,8 @@ from concurrent import futures
 import requests
 import re
 
-nodes = ["123"]
-files = {"123":["a.txt","b.txt"]}
+nodes = []
+files = {}
 
 class Files(files_pb2_grpc.FilesServicer):
     def NamenodeConn(self, request, context):

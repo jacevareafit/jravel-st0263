@@ -2,6 +2,7 @@ import grpc
 import files_pb2
 import files_pb2_grpc
 
+from dotenv import load_dotenv
 import os
 from concurrent import futures
 from os.path import isfile, join
@@ -51,9 +52,11 @@ class Files(files_pb2_grpc.FilesServicer):
         with open(filepath, 'wb') as f:
             f.write(data)
         
-        with grpc.insecure_channel("127.0.0.1:50050") as chan:
+        namenode = os.getenv("namenode")
+        datanode = os.getenv("datanode")
+        with grpc.insecure_channel(namenode) as chan:
             stub = files_pb2_grpc.FilesStub(chan)
-            request = files_pb2.NameNodeRequest(conn="127.0.0.1:50051",files=listFiles())
+            request = files_pb2.NameNodeRequest(conn=datanode,files=listFiles())
             response = stub.NamenodeConn(request)
             if response.status == 200:
                 print("Namenode success!")
@@ -61,9 +64,11 @@ class Files(files_pb2_grpc.FilesServicer):
         return files_pb2.EmptyMessage()
 
 def createServer():
-    with grpc.insecure_channel("127.0.0.1:50050") as chan:
+    namenode = os.getenv("namenode")
+    datanode = os.getenv("datanode")
+    with grpc.insecure_channel(namenode) as chan:
         stub = files_pb2_grpc.FilesStub(chan)
-        request = files_pb2.NameNodeRequest(conn="127.0.0.1:50051",files=listFiles())
+        request = files_pb2.NameNodeRequest(conn=datanode,files=listFiles())
         response = stub.NamenodeConn(request)
         if response.status == 200:
             print("Namenode success!")
@@ -79,9 +84,8 @@ def createServer():
     server.wait_for_termination()
 
 def main():
-    createServer()
-    # print(listFiles())
-    
+    load_dotenv()
+    createServer()    
 
 if __name__ == "__main__":
     main()
