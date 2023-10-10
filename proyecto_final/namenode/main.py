@@ -41,9 +41,18 @@ class Files(files_pb2_grpc.FilesServicer):
     def NamenodeUploadFile(self, request, context):
         if len(nodes)==0:
             return files_pb2.DataNodeResponse(status=400)
-        
+
         node = nodes[random.randrange(len(nodes))]
         return files_pb2.DataNodeResponse(conn=node,status=200)
+    
+    def SearchFiles(self, request, context):
+        regex = re.compile(request.regex)
+        listFiles = []
+        for i in files:
+            for file in files[i]:
+                listFiles.append(file)
+        filtered_list = [item for item in listFiles if regex.search(item)]
+        return files_pb2.ListFilesResponse(files=filtered_list,status=200)
     
 def createServer():
     server = grpc.server(futures.ThreadPoolExecutor())

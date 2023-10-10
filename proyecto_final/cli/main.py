@@ -87,13 +87,13 @@ class CLIInterface:
             print("Error: No se pudo subir el archivo")
 
     def search_files(self, regex):
-        response = requests.get(self.name_node_url  + '/search', params={'regex': regex})
-        if response.status_code == 200:
-            matches = re.findall(regex, response.text)
-            print(matches)
-        else:
-            print("Error: No se pudo realizar la búsqueda")
-            print("Status code: ", response.status_code)
+        with grpc.insecure_channel(self.name_node_url) as chan:
+            stub = files_pb2_grpc.FilesStub(chan)
+            response = stub.SearchFiles(files_pb2.SearchFilesRequest(regex=regex))
+            if response.status == 200:
+                print(response.files)
+            else:
+                print("Error: No se pudo realizar la búsqueda")
 
 
     def list_files(self):

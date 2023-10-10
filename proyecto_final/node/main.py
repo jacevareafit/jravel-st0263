@@ -50,6 +50,14 @@ class Files(files_pb2_grpc.FilesServicer):
             data.extend(request.chunk_data)
         with open(filepath, 'wb') as f:
             f.write(data)
+        
+        with grpc.insecure_channel("127.0.0.1:50050") as chan:
+            stub = files_pb2_grpc.FilesStub(chan)
+            request = files_pb2.NameNodeRequest(conn="127.0.0.1:50051",files=listFiles())
+            response = stub.NamenodeConn(request)
+            if response.status == 200:
+                print("Namenode success!")
+        
         return files_pb2.EmptyMessage()
 
 def createServer():

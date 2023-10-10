@@ -40,6 +40,10 @@ message DataNodeResponse {
     int32 status = 2;
 }
 
+message SearchFilesRequest {
+    string regex = 1;
+}
+
 service Files {
     rpc PingFiles(EmptyMessage) returns (PingFilesResponse);
     rpc ListFiles(EmptyMessage) returns (ListFilesResponse);
@@ -48,4 +52,5 @@ service Files {
     rpc NamenodeConn(NameNodeRequest) returns (StatusMessage);
     rpc NamenodeDownloadFile(DownloadFileRequest) returns (DataNodeResponse);
     rpc NamenodeUploadFile(EmptyMessage) returns (DataNodeResponse);
+    rpc SearchFiles(SearchFilesRequest) returns (ListFilesResponse);
 }

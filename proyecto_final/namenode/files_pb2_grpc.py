@@ -49,6 +49,11 @@ class FilesStub(object):
                 request_serializer=files__pb2.EmptyMessage.SerializeToString,
                 response_deserializer=files__pb2.DataNodeResponse.FromString,
                 )
+        self.SearchFiles = channel.unary_unary(
+                '/Files/SearchFiles',
+                request_serializer=files__pb2.SearchFilesRequest.SerializeToString,
+                response_deserializer=files__pb2.ListFilesResponse.FromString,
+                )
 
 
 class FilesServicer(object):
@@ -96,6 +101,12 @@ class FilesServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SearchFiles(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_FilesServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -133,6 +144,11 @@ def add_FilesServicer_to_server(servicer, server):
                     servicer.NamenodeUploadFile,
                     request_deserializer=files__pb2.EmptyMessage.FromString,
                     response_serializer=files__pb2.DataNodeResponse.SerializeToString,
+            ),
+            'SearchFiles': grpc.unary_unary_rpc_method_handler(
+                    servicer.SearchFiles,
+                    request_deserializer=files__pb2.SearchFilesRequest.FromString,
+                    response_serializer=files__pb2.ListFilesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -260,5 +276,22 @@ class Files(object):
         return grpc.experimental.unary_unary(request, target, '/Files/NamenodeUploadFile',
             files__pb2.EmptyMessage.SerializeToString,
             files__pb2.DataNodeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SearchFiles(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Files/SearchFiles',
+            files__pb2.SearchFilesRequest.SerializeToString,
+            files__pb2.ListFilesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
