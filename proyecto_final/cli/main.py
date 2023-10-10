@@ -69,10 +69,20 @@ class CLIInterface:
 
     def put_file(self, file_path):
         try:
-            data_node_url = self._get_data_node_url('PUT')
-            with grpc.insecure_channel(data_node_url) as chan:
+            dataNode = ""
+            with grpc.insecure_channel(self.name_node_url) as chan:
+                stub = files_pb2_grpc.FilesStub(chan)
+                response = stub.NamenodeUploadFile(files_pb2.EmptyMessage())
+                if response.status == 200:
+                    dataNode = response.conn
+                else:
+                    print("Error: No se pudo subir el archivo")
+                    print("Fallo namenode")
+                    return
+            with grpc.insecure_channel(dataNode) as chan:
                 stub = files_pb2_grpc.FilesStub(chan)
                 stub.UploadFile(self.read_iterfile(file_path))
+            print("File upload")
         except:
             print("Error: No se pudo subir el archivo")
 

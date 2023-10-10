@@ -2,6 +2,7 @@ import grpc
 import files_pb2
 import files_pb2_grpc
 
+import random
 import os
 from concurrent import futures
 import requests
@@ -36,7 +37,14 @@ class Files(files_pb2_grpc.FilesServicer):
                 if file == fileName:
                     return files_pb2.DataNodeResponse(conn=i,status=200)
         return files_pb2.DataNodeResponse(status=400)
-
+    
+    def NamenodeUploadFile(self, request, context):
+        if len(nodes)==0:
+            return files_pb2.DataNodeResponse(status=400)
+        
+        node = nodes[random.randrange(len(nodes))]
+        return files_pb2.DataNodeResponse(conn=node,status=200)
+    
 def createServer():
     server = grpc.server(futures.ThreadPoolExecutor())
 

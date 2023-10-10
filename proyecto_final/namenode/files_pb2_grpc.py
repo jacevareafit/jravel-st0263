@@ -44,6 +44,11 @@ class FilesStub(object):
                 request_serializer=files__pb2.DownloadFileRequest.SerializeToString,
                 response_deserializer=files__pb2.DataNodeResponse.FromString,
                 )
+        self.NamenodeUploadFile = channel.unary_unary(
+                '/Files/NamenodeUploadFile',
+                request_serializer=files__pb2.EmptyMessage.SerializeToString,
+                response_deserializer=files__pb2.DataNodeResponse.FromString,
+                )
 
 
 class FilesServicer(object):
@@ -85,6 +90,12 @@ class FilesServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def NamenodeUploadFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_FilesServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -116,6 +127,11 @@ def add_FilesServicer_to_server(servicer, server):
             'NamenodeDownloadFile': grpc.unary_unary_rpc_method_handler(
                     servicer.NamenodeDownloadFile,
                     request_deserializer=files__pb2.DownloadFileRequest.FromString,
+                    response_serializer=files__pb2.DataNodeResponse.SerializeToString,
+            ),
+            'NamenodeUploadFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.NamenodeUploadFile,
+                    request_deserializer=files__pb2.EmptyMessage.FromString,
                     response_serializer=files__pb2.DataNodeResponse.SerializeToString,
             ),
     }
@@ -226,6 +242,23 @@ class Files(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Files/NamenodeDownloadFile',
             files__pb2.DownloadFileRequest.SerializeToString,
+            files__pb2.DataNodeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def NamenodeUploadFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Files/NamenodeUploadFile',
+            files__pb2.EmptyMessage.SerializeToString,
             files__pb2.DataNodeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -47,4 +47,5 @@ service Files {
     rpc UploadFile(stream UploadFileRequest) returns (EmptyMessage);
     rpc NamenodeConn(NameNodeRequest) returns (StatusMessage);
     rpc NamenodeDownloadFile(DownloadFileRequest) returns (DataNodeResponse);
+    rpc NamenodeUploadFile(EmptyMessage) returns (DataNodeResponse);
 }
