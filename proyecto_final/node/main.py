@@ -7,13 +7,17 @@ from concurrent import futures
 from os.path import isfile, join
 from os import listdir
 
+def listFiles():
+    files = [f for f in listdir("src/") if isfile(join("src/", f))]
+    return files
+
 class Files(files_pb2_grpc.FilesServicer):
     def PingFiles(self, request, context):
         response = files_pb2.PingFilesResponse(ack='1')
         return response
     def ListFiles(self, request, context):
         try:
-            files = [f for f in listdir("src/") if isfile(join("src/", f))]
+            files = listFiles()
             response = files_pb2.ListFilesResponse(files=files,status=200)
         except:
             response = files_pb2.ListFilesResponse(status=500)
@@ -36,10 +40,12 @@ class Files(files_pb2_grpc.FilesServicer):
     def UploadFile(self, request_iterator, context):
         data = bytearray()
         filepath = 'src/'
+        print("UPLOAD Request")
 
         for request in request_iterator:
             if request.fileName:
                 filepath += request.fileName
+                print("Uploading: "+request.fileName)
                 continue
             data.extend(request.chunk_data)
         with open(filepath, 'wb') as f:
@@ -47,12 +53,14 @@ class Files(files_pb2_grpc.FilesServicer):
         return files_pb2.EmptyMessage()
 
 def createServer():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=2), 
-        options = [
-            ('grpc.max_send_message_length', 16772984),
-            ('grpc.max_receive_message_length', 16772984)
-        ]
-    )
+    with grpc.insecure_channel("127.0.0.1:50050") as chan:
+        stub = files_pb2_grpc.FilesStub(chan)
+        request = files_pb2.NameNodeRequest(conn="127.0.0.1:50051",files=listFiles())
+        response = stub.NamenodeConn(request)
+        if response.status == 200:
+            print("Namenode success!")
+
+    server = grpc.server(futures.ThreadPoolExecutor())
 
     files_pb2_grpc.add_FilesServicer_to_server(Files(),server)
 

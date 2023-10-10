@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0b\x66iles.proto\"\x0e\n\x0c\x45mptyMessage\" \n\x11PingFilesResponse\x12\x0b\n\x03\x61\x63k\x18\x01 \x01(\t\"2\n\x11ListFilesResponse\x12\r\n\x05\x66iles\x18\x01 \x03(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\"\'\n\x13\x44ownloadFileRequest\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\"*\n\x14\x44ownloadFileResponse\x12\x12\n\nchunk_data\x18\x01 \x01(\x0c\"H\n\x11UploadFileRequest\x12\x12\n\x08\x66ileName\x18\x01 \x01(\tH\x00\x12\x14\n\nchunk_data\x18\x02 \x01(\x0cH\x00\x42\t\n\x07request2\xd9\x01\n\x05\x46iles\x12.\n\tPingFiles\x12\r.EmptyMessage\x1a\x12.PingFilesResponse\x12.\n\tListFiles\x12\r.EmptyMessage\x1a\x12.ListFilesResponse\x12=\n\x0c\x44ownloadFile\x12\x14.DownloadFileRequest\x1a\x15.DownloadFileResponse0\x01\x12\x31\n\nUploadFile\x12\x12.UploadFileRequest\x1a\r.EmptyMessage(\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0b\x66iles.proto\"\x0e\n\x0c\x45mptyMessage\"\x1f\n\rStatusMessage\x12\x0e\n\x06status\x18\x01 \x01(\x05\" \n\x11PingFilesResponse\x12\x0b\n\x03\x61\x63k\x18\x01 \x01(\t\"2\n\x11ListFilesResponse\x12\r\n\x05\x66iles\x18\x01 \x03(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\"\'\n\x13\x44ownloadFileRequest\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\"*\n\x14\x44ownloadFileResponse\x12\x12\n\nchunk_data\x18\x01 \x01(\x0c\"H\n\x11UploadFileRequest\x12\x12\n\x08\x66ileName\x18\x01 \x01(\tH\x00\x12\x14\n\nchunk_data\x18\x02 \x01(\x0cH\x00\x42\t\n\x07request\".\n\x0fNameNodeRequest\x12\x0c\n\x04\x63onn\x18\x01 \x01(\t\x12\r\n\x05\x66iles\x18\x02 \x03(\t\"0\n\x10\x44\x61taNodeResponse\x12\x0c\n\x04\x63onn\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x05\x32\xcc\x02\n\x05\x46iles\x12.\n\tPingFiles\x12\r.EmptyMessage\x1a\x12.PingFilesResponse\x12.\n\tListFiles\x12\r.EmptyMessage\x1a\x12.ListFilesResponse\x12=\n\x0c\x44ownloadFile\x12\x14.DownloadFileRequest\x1a\x15.DownloadFileResponse0\x01\x12\x31\n\nUploadFile\x12\x12.UploadFileRequest\x1a\r.EmptyMessage(\x01\x12\x30\n\x0cNamenodeConn\x12\x10.NameNodeRequest\x1a\x0e.StatusMessage\x12?\n\x14NamenodeDownloadFile\x12\x14.DownloadFileRequest\x1a\x11.DataNodeResponseb\x06proto3'
 )
 
 
@@ -50,6 +50,38 @@ _EMPTYMESSAGE = _descriptor.Descriptor(
 )
 
 
+_STATUSMESSAGE = _descriptor.Descriptor(
+  name='StatusMessage',
+  full_name='StatusMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='StatusMessage.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=31,
+  serialized_end=62,
+)
+
+
 _PINGFILESRESPONSE = _descriptor.Descriptor(
   name='PingFilesResponse',
   full_name='PingFilesResponse',
@@ -77,8 +109,8 @@ _PINGFILESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31,
-  serialized_end=63,
+  serialized_start=64,
+  serialized_end=96,
 )
 
 
@@ -116,8 +148,8 @@ _LISTFILESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=115,
+  serialized_start=98,
+  serialized_end=148,
 )
 
 
@@ -148,8 +180,8 @@ _DOWNLOADFILEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=117,
-  serialized_end=156,
+  serialized_start=150,
+  serialized_end=189,
 )
 
 
@@ -180,8 +212,8 @@ _DOWNLOADFILERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=158,
-  serialized_end=200,
+  serialized_start=191,
+  serialized_end=233,
 )
 
 
@@ -224,8 +256,86 @@ _UPLOADFILEREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=202,
-  serialized_end=274,
+  serialized_start=235,
+  serialized_end=307,
+)
+
+
+_NAMENODEREQUEST = _descriptor.Descriptor(
+  name='NameNodeRequest',
+  full_name='NameNodeRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='conn', full_name='NameNodeRequest.conn', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='files', full_name='NameNodeRequest.files', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=309,
+  serialized_end=355,
+)
+
+
+_DATANODERESPONSE = _descriptor.Descriptor(
+  name='DataNodeResponse',
+  full_name='DataNodeResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='conn', full_name='DataNodeResponse.conn', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='DataNodeResponse.status', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=357,
+  serialized_end=405,
 )
 
 _UPLOADFILEREQUEST.oneofs_by_name['request'].fields.append(
@@ -235,11 +345,14 @@ _UPLOADFILEREQUEST.oneofs_by_name['request'].fields.append(
   _UPLOADFILEREQUEST.fields_by_name['chunk_data'])
 _UPLOADFILEREQUEST.fields_by_name['chunk_data'].containing_oneof = _UPLOADFILEREQUEST.oneofs_by_name['request']
 DESCRIPTOR.message_types_by_name['EmptyMessage'] = _EMPTYMESSAGE
+DESCRIPTOR.message_types_by_name['StatusMessage'] = _STATUSMESSAGE
 DESCRIPTOR.message_types_by_name['PingFilesResponse'] = _PINGFILESRESPONSE
 DESCRIPTOR.message_types_by_name['ListFilesResponse'] = _LISTFILESRESPONSE
 DESCRIPTOR.message_types_by_name['DownloadFileRequest'] = _DOWNLOADFILEREQUEST
 DESCRIPTOR.message_types_by_name['DownloadFileResponse'] = _DOWNLOADFILERESPONSE
 DESCRIPTOR.message_types_by_name['UploadFileRequest'] = _UPLOADFILEREQUEST
+DESCRIPTOR.message_types_by_name['NameNodeRequest'] = _NAMENODEREQUEST
+DESCRIPTOR.message_types_by_name['DataNodeResponse'] = _DATANODERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 EmptyMessage = _reflection.GeneratedProtocolMessageType('EmptyMessage', (_message.Message,), {
@@ -248,6 +361,13 @@ EmptyMessage = _reflection.GeneratedProtocolMessageType('EmptyMessage', (_messag
   # @@protoc_insertion_point(class_scope:EmptyMessage)
   })
 _sym_db.RegisterMessage(EmptyMessage)
+
+StatusMessage = _reflection.GeneratedProtocolMessageType('StatusMessage', (_message.Message,), {
+  'DESCRIPTOR' : _STATUSMESSAGE,
+  '__module__' : 'files_pb2'
+  # @@protoc_insertion_point(class_scope:StatusMessage)
+  })
+_sym_db.RegisterMessage(StatusMessage)
 
 PingFilesResponse = _reflection.GeneratedProtocolMessageType('PingFilesResponse', (_message.Message,), {
   'DESCRIPTOR' : _PINGFILESRESPONSE,
@@ -284,6 +404,20 @@ UploadFileRequest = _reflection.GeneratedProtocolMessageType('UploadFileRequest'
   })
 _sym_db.RegisterMessage(UploadFileRequest)
 
+NameNodeRequest = _reflection.GeneratedProtocolMessageType('NameNodeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _NAMENODEREQUEST,
+  '__module__' : 'files_pb2'
+  # @@protoc_insertion_point(class_scope:NameNodeRequest)
+  })
+_sym_db.RegisterMessage(NameNodeRequest)
+
+DataNodeResponse = _reflection.GeneratedProtocolMessageType('DataNodeResponse', (_message.Message,), {
+  'DESCRIPTOR' : _DATANODERESPONSE,
+  '__module__' : 'files_pb2'
+  # @@protoc_insertion_point(class_scope:DataNodeResponse)
+  })
+_sym_db.RegisterMessage(DataNodeResponse)
+
 
 
 _FILES = _descriptor.ServiceDescriptor(
@@ -293,8 +427,8 @@ _FILES = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=277,
-  serialized_end=494,
+  serialized_start=408,
+  serialized_end=740,
   methods=[
   _descriptor.MethodDescriptor(
     name='PingFiles',
@@ -333,6 +467,26 @@ _FILES = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_UPLOADFILEREQUEST,
     output_type=_EMPTYMESSAGE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='NamenodeConn',
+    full_name='Files.NamenodeConn',
+    index=4,
+    containing_service=None,
+    input_type=_NAMENODEREQUEST,
+    output_type=_STATUSMESSAGE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='NamenodeDownloadFile',
+    full_name='Files.NamenodeDownloadFile',
+    index=5,
+    containing_service=None,
+    input_type=_DOWNLOADFILEREQUEST,
+    output_type=_DATANODERESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

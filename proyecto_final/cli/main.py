@@ -32,20 +32,19 @@ class CLIInterface:
             print("Opción inválida. Intente de nuevo.")
             self.interactuar_cli()
 
-    def _get_data_node_url(self, action, file_name=None):
-        #payload = {'action': action, 'file_name': file_name}
-        #response = requests.get(self.name_node_url, params=payload)
-        #if response.status_code == 200:
-        #    return response.text
-        #else:
-        #    print("Error: No se pudo obtener la URL del DataNode")
-        #    self.interactuar_cli()
-        return "127.0.0.1:50051"
-
     def get_file(self, file_name):
         try:
-            data_node_url = self._get_data_node_url('GET', file_name)
-            with grpc.insecure_channel(data_node_url) as chan:
+            dataNode = ""
+            with grpc.insecure_channel(self.name_node_url) as chan:
+                stub = files_pb2_grpc.FilesStub(chan)
+                response = stub.NamenodeDownloadFile(files_pb2.DownloadFileRequest(fileName=file_name))
+                if response.status == 200:
+                    dataNode = response.conn
+                else:
+                    print("Error: No se pudo obtener el archivo")
+                    return
+            
+            with grpc.insecure_channel(dataNode) as chan:
                 stub = files_pb2_grpc.FilesStub(chan)
                 filepath = "src/"+file_name
                 for entry_response in stub.DownloadFile(files_pb2.DownloadFileRequest(fileName=file_name)):
@@ -57,8 +56,8 @@ class CLIInterface:
             print("Error: No se pudo obtener el archivo")
 
     def read_iterfile(self,filepath, chunk_size=1024):
-        # _, filename = os.path.split(filepath)
-        yield files_pb2.UploadFileRequest(fileName="src/testUpload.txt")
+        _, filename = os.path.split(filepath)
+        yield files_pb2.UploadFileRequest(fileName=filename)
         with open(filepath, mode="rb") as f:
             while True:
                 chunk = f.read(chunk_size)
@@ -66,16 +65,16 @@ class CLIInterface:
                     entry_request = files_pb2.UploadFileRequest(chunk_data=chunk)
                     yield entry_request
                 else: # end of file
-                    return
-                
+                    return         
 
     def put_file(self, file_path):
-        data_node_url = self._get_data_node_url('PUT')
-        with grpc.insecure_channel("localhost:50051") as chan:
-            stub = files_pb2_grpc.FilesStub(chan)
-            stub.UploadFile(self.read_iterfile(file_path))
-        
-        print("Error: No se pudo subir el archivo")
+        try:
+            data_node_url = self._get_data_node_url('PUT')
+            with grpc.insecure_channel(data_node_url) as chan:
+                stub = files_pb2_grpc.FilesStub(chan)
+                stub.UploadFile(self.read_iterfile(file_path))
+        except:
+            print("Error: No se pudo subir el archivo")
 
     def search_files(self, regex):
         response = requests.get(self.name_node_url  + '/search', params={'regex': regex})
@@ -88,10 +87,7 @@ class CLIInterface:
 
 
     def list_files(self):
-        # No se deberia hacer contra un nodo sino con el namenode
-        ip = "127.0.0.1"
-        port = "50051"
-        with grpc.insecure_channel(ip+":"+str(port)) as chan:
+        with grpc.insecure_channel(self.name_node_url) as chan:
             stub = files_pb2_grpc.FilesStub(chan)
             request = files_pb2.EmptyMessage()
             response = stub.ListFiles(request)
@@ -103,33 +99,7 @@ class CLIInterface:
             print("Error: No se pudo listar los archivos")
             print("Status code: ", response.status)
 
+
 if __name__ == "__main__":
-    cli = CLIInterface("http://namenode_url")
+    cli = CLIInterface("localhost:50050")
     cli.interactuar_cli()
-
-#def main():
-#    ip = "127.0.0.1"
-#    port = "50051"
-#    with grpc.insecure_channel(ip+":"+str(port)) as chan:
-#        stub = files_pb2_grpc.FilesStub(chan)
-        
-        # list files
-        # request = files_pb2.EmptyMessage()
-        # result = stub.ListFiles(request)
-        # print(f'result:{result.files}')
-
-
-        # download file
-        # filepath = "src/file1.txt"
-        # for entry_response in stub.DownloadFile(files_pb2.DownloadFileRequest(fileName="file1.txt")):
-        #    with open(filepath, mode="ab") as f:
-        #        f.write(entry_response.chunk_data)
-        #        f.close()
-
-        # upload file
-#        stub.UploadFile(read_iterfile('test.txt'))
-
-    
-
-#if __name__ == "__main__":
-#    main()
