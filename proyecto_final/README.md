@@ -89,7 +89,7 @@ para inicializar el Cli debemos ingresar a la ruta del Cli y ejecutar el archivo
 ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/baa1acb3-5ae1-4ecd-ae5e-6c0ea0fbc0e3)
 
 ### Buscar archivos (se debe ingresar una expresion regular)
-![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/4fc8dbda-5de5-4af2-b0b6-338d066d436e)
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/41296b86-97e7-4180-980d-9f40f6b1b2c7)
 
 ### Listar archivos
 ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6d7249c3-78a4-4b18-8d2a-aa205fd824d1)
