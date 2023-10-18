@@ -65,19 +65,27 @@ sudo python -m pip install grpcio
 ### Repo
 git clone https://github.com/jacevareafit/jravel-st0263.git
 
-#Ejecución del programa
+# Ejecución del programa
 
 para inicializar el namenode debemos ingresar a la ruta del nameNode y ejecutar el archivo main.py
   - ./jravel-st0263/proyecto_final/namenode/ python3 main.py
+  - ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/1ec95014-b1d3-4f6c-b26f-406fc7cca596)
+
 
 para inicializar el Datanode debemos ingresar a la ruta del Datanode y ejecutar el archivo main.py
   - ./jravel-st0263/proyecto_final/node/ python3 main.py
+  - ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e5a9271c-3689-4809-bfdd-f426600bb9b7)
+
 
 para inicializar el Cli debemos ingresar a la ruta del Cli y ejecutar el archivo main.py
   - ./jravel-st0263/proyecto_final/cli/ python3 main.py
-
-A continuacion el Cli desplegara un menu con las funcionalidades desarrolladas.
+  - A continuacion el Cli desplegara un menu con las funcionalidades desarrolladas.
 ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/65886bf9-3033-4425-8544-51292b93406c)
+
+
+
+
+
 
 
 
