@@ -82,6 +82,18 @@ para inicializar el Cli debemos ingresar a la ruta del Cli y ejecutar el archivo
   - A continuacion el Cli desplegara un menu con las funcionalidades desarrolladas.
 ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/65886bf9-3033-4425-8544-51292b93406c)
 
+### obtener archivos
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/8f163cb3-68d6-4b50-84f2-0072b9a7182e)
+
+### Guardar archivo (se debe ingresar la ruta relativa)
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/baa1acb3-5ae1-4ecd-ae5e-6c0ea0fbc0e3)
+
+### Buscar archivos (se debe ingresar una expresion regular)
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/4fc8dbda-5de5-4af2-b0b6-338d066d436e)
+
+### Listar archivos
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6d7249c3-78a4-4b18-8d2a-aa205fd824d1)
+
 
 
 
