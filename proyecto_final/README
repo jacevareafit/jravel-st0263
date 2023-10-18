@@ -1,0 +1,26 @@
+#Proyecto Nro 1
+
+ 
+| ------------- | ------------- |
+| Materia  | 	Tópicos especiales en Telemática - ST0263  |
+| Integrantes  | Kevin Alejandro Sossa Chavarria (kasossac@eafit.edu.co) |
+|   | Jacobo Rave Londoño (jravel@eafit.edu.co) |
+|   | Daniel Jaramillo Valencia (djaramillv@eafit.edu.co) |
+|   | Antonio Carmona Gaviria (acarmonag@eafit.edu.co) |
+| Profesor  | Edwin Nelson Montoya Munera (mailto:emontoya@eafit.edu.co) |
+
+#Objetivo
+
+Diseñar y desarrollar un DFS (Distributed File System) 
+
+#Objetivos cumplidos
+
+- [x] La escritura y lectura de los archivos debe de ser entre el Cli y el DataNode. ()
+- [x] Función ‘list’ completa.
+- [x] Función ‘search’ completa.
+- [x] Función ‘get’ completa.
+- [x] Función ‘put’ completa.
+- [x] El archivo debe estar en mas de un dataNode
+
+
+
