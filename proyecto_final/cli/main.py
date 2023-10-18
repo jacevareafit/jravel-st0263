@@ -6,6 +6,8 @@ import os
 from concurrent import futures
 import requests
 import re
+from dotenv import load_dotenv
+
 
 class CLIInterface:
     def __init__(self, name_node_url):
@@ -111,6 +113,8 @@ class CLIInterface:
 
 
 if __name__ == "__main__":
-    namenode = os.getenv("namenode")
+    load_dotenv()
+    namenode = str(os.getenv("namenode")).encode('utf-8')
+    print(namenode)
     cli = CLIInterface(namenode)
     cli.interactuar_cli()

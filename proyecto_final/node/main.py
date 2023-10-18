@@ -19,13 +19,14 @@ class Files(files_pb2_grpc.FilesServicer):
     def ListFiles(self, request, context):
         try:
             files = listFiles()
+            print("ListFiles Request")
             response = files_pb2.ListFilesResponse(files=files,status=200)
         except:
             response = files_pb2.ListFilesResponse(status=500)
         return response
     def DownloadFile(self, request, context):
         chunk_size = 1024
-
+        print("Download Request")
         filepath = "src/"+request.fileName
         if os.path.exists(filepath):
             print("Sending: "+filepath)
@@ -65,6 +66,7 @@ class Files(files_pb2_grpc.FilesServicer):
 
 def createServer():
     namenode = os.getenv("namenode")
+    print("namenode", namenode)
     datanode = os.getenv("datanode")
     with grpc.insecure_channel(namenode) as chan:
         stub = files_pb2_grpc.FilesStub(chan)
