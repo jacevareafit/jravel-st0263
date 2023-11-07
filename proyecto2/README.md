@@ -1,15 +1,20 @@
 
-Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar una aplicación de WordPress utilizando AWS RDS y un balanceador de carga, el proceso paso a paso se puede dividir en varias partes principales: la creación del cluster EKS, la configuración del entorno local, la instalación de WordPress con Helm y RDS, y finalmente la configuración de los registros DNS. Aquí tienes una guía detallada para cada uno de estos pasos.
+Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar una aplicación de WordPress utilizando AWS y un balanceador de carga hay que crear el cluster EKS, la configuración del entorno local, la instalación de WordPress con Helm y finalmente configurar los registros DNS. 
 
 # Paso 1: Crear el Cluster EKS
 1. Accede a la consola de AWS y navega hasta el servicio EKS.
-2. Cambia a la región donde quieres desplegar tu cluster.
-3. Selecciona "Create Cluster" y sigue los pasos proporcionados por la interfaz para configurar tu cluster. Incluye detalles como:
+   ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/51d98d34-76ce-4df0-b6a5-cbdbeeba282c)
+
+3. Cambia a la región donde quieres desplegar tu cluster para evitar problemas usar (oregon us-east-2).
+4. Selecciona "Create Cluster"
+
+   ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/b40e064f-3ea2-4918-acad-1143b4c5d88a)
+5. configurar el cluster con:
+
    - Nombre del cluster
-   - Versión de Kubernetes
-   - Roles de IAM
-   - VPC y subredes
-4. Una vez configurado, inicia la creación del cluster y espera a que AWS lo provisione completamente.
+   - Versión de Kubernetes ()
+   - VPC
+6. Una vez configurado, inicia la creación del cluster y espera a que AWS lo provisione completamente.
 
 # Paso 2: Configurar el Entorno Local
 1. Abrir AWS CloudShell o configurar AWS CLI en tu máquina local.
@@ -36,6 +41,7 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
      notepad %USERPROFILE%\.kube\config
      
    - Añadir la configuración de `kubectl` como se indica en el panel de EKS (reemplaza los placeholders con la información de tu cluster).
+     
 5. Añadir la variable `KUBECONFIG` al archivo de perfil de tu shell (`/.bashrc` o `/.bash_profile`):
    sh
    export KUBECONFIG=$HOME/.kube/config
@@ -80,9 +86,10 @@ www     IN CNAME <load-balancer-dns-name>.
 ssh     IN CNAME <load-balancer-dns-name>.
 
 
+![WhatsApp Image 2023-11-06 at 6 44 40 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/f9787e1b-e03e-4d77-82b1-80fd3fda85bb)
+
+
 Una vez que los registros DNS se propaguen, deberías poder
 
- acceder a tu WordPress mediante la URL `www.example.com`.
+ acceder al WordPress mediante la URL `www.example.com`.
 
-### Nota Final
-Este es un proceso simplificado y asume cierto nivel de familiaridad con AWS y la línea de comandos. En un entorno de producción, también tendrías que considerar la seguridad, el monitoreo, la gestión de costos y otros aspectos importantes del despliegue en la nube.
