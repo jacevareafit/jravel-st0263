@@ -12,24 +12,29 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
 5. configurar el cluster con:
 
    - Nombre del cluster
-   - Versión de Kubernetes ()
+   - Versión de Kubernetes (1.28)
    - VPC
+  
+     ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/d08fceab-1b07-4619-b6bb-7b76ac9d7aaa)
+
 6. Una vez configurado, inicia la creación del cluster y espera a que AWS lo provisione completamente.
 
 # Paso 2: Configurar el Entorno Local
 1. Abrir AWS CloudShell o configurar AWS CLI en tu máquina local.
-2. Instalar Helm:
+   ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6fb5b295-a181-426e-8785-000504441f38)
+
+3. Instalar Helm:
    sh
    sudo yum install openssl -y 
    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
    chmod 700 get_helm.sh 
    ./get_helm.sh
    
-3. Agregar el repositorio Bitnami a Helm:
+4. Agregar el repositorio Bitnami a Helm:
    sh
    helm repo add bitnami https://charts.bitnami.com/bitnami
    
-4. Configurar `kubectl`:
+5. Configurar `kubectl`:
    - En sistemas basados en Unix:
      sh
      mkdir -p $HOME/.kube
@@ -42,18 +47,20 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
      
    - Añadir la configuración de `kubectl` como se indica en el panel de EKS (reemplaza los placeholders con la información de tu cluster).
      
-5. Añadir la variable `KUBECONFIG` al archivo de perfil de tu shell (`/.bashrc` o `/.bash_profile`):
+6. Añadir la variable `KUBECONFIG` al archivo de perfil de tu shell (`/.bashrc` o `/.bash_profile`):
    sh
    export KUBECONFIG=$HOME/.kube/config
    
-6. Ejecutar `source ~/.bashrc` para aplicar los cambios.
+8. Ejecutar `source ~/.bashrc` para aplicar los cambios.
 
 # Paso 3: Crear un Node Group
 1. Vuelve a la consola de EKS y selecciona tu cluster.
 2. En la sección "Compute", crea un Node Group con la configuración deseada.
-3. Espera a que AWS termine de crear el Node Group y los nodos estén en estado "Ready".
+   ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/a7ce2b0c-dd79-4f4f-ad3a-36fc768a2d52)
 
-### Paso 4: Instalar WordPress con Helm y RDS
+4. Espera a que AWS termine de crear el Node Group y los nodos estén en estado "Ready".
+
+### Paso 4: Instalar WordPress con Helm
 1. Crea una instancia de RDS que WordPress usará como base de datos.
 2. Instala WordPress utilizando Helm y configura los valores para conectar con la instancia de RDS:
    sh
@@ -92,4 +99,8 @@ ssh     IN CNAME <load-balancer-dns-name>.
 Una vez que los registros DNS se propaguen, deberías poder
 
  acceder al WordPress mediante la URL `www.example.com`.
+
+
+# Demo y desarrollo proyecto 2
+https://eafit-my.sharepoint.com/personal/jravel_eafit_edu_co/_layouts/15/stream.aspx?id=%2Fpersonal%2Fjravel%5Feafit%5Fedu%5Fco%2FDocuments%2FGrabaciones%2Fproyecto2%2D20231106%5F182339%2DMeeting%20Recording%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview&ga=1
 
