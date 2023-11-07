@@ -13,64 +13,62 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
 1. Accede a la consola de AWS y navega hasta el servicio EKS.
    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/51d98d34-76ce-4df0-b6a5-cbdbeeba282c)
 
-3. Cambia a la región donde quieres desplegar tu cluster para evitar problemas usar (oregon us-east-2).
-4. Selecciona "Create Cluster"
+2. Cambia a la región donde quieres desplegar tu cluster para evitar problemas usar (oregon us-east-2).
+3. Selecciona "Create Cluster"
 
    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/b40e064f-3ea2-4918-acad-1143b4c5d88a)
-5. configurar el cluster con:
+4. configurar el cluster con:
 
-   - Nombre del cluster
-   - Versión de Kubernetes (1.28)
-   - VPC
-  
      ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/d08fceab-1b07-4619-b6bb-7b76ac9d7aaa)
 
-6. Una vez configurado, inicia la creación del cluster y espera a que AWS lo provisione completamente.
+5. Una vez configurado, inicia la creación del cluster y espera a que AWS lo provisione completamente.
 
 # Paso 2: Configurar el Entorno Local
 1. Abrir AWS CloudShell o configurar AWS CLI en tu máquina local.
    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6fb5b295-a181-426e-8785-000504441f38)
 
-3. Instalar Helm:
-   sh
-   sudo yum install openssl -y 
-   curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
-   chmod 700 get_helm.sh 
-   ./get_helm.sh
+2. Instalar Helm:
+   ```bash
+   sh sudo yum install openssl -y curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 >
+   get_helm.sh chmod 700 get_helm.sh ./get_helm.sh
+   ```
    
-4. Agregar el repositorio Bitnami a Helm:
-   sh
-   helm repo add bitnami https://charts.bitnami.com/bitnami
+3. Agregar el repositorio Bitnami a Helm:
+   ```bash
+   sh helm repo add bitnami https://charts.bitnami.com/bitnami
+   ```
    
-5. Configurar `kubectl`:
+4. Configurar `kubectl`:
    - En sistemas basados en Unix:
-     sh
-     mkdir -p $HOME/.kube
-     nano $HOME/.kube/config
+     ```bash
+     sh mkdir -p $HOME/.kube nano $HOME/.kube/config
+     ```
      
    - En Windows:
-     sh
-     mkdir %USERPROFILE%\.kube
-     notepad %USERPROFILE%\.kube\config
+     ```bash
+     sh mkdir %USERPROFILE%\.kube notepad %USERPROFILE%\.kube\config
+     ```
      
    - Añadir la configuración de `kubectl` como se indica en el panel de EKS (reemplaza los placeholders con la información de tu cluster).
      
-6. Añadir la variable `KUBECONFIG` al archivo de perfil de tu shell (`/.bashrc` o `/.bash_profile`):
+5. Añadir la variable `KUBECONFIG` al archivo de perfil de tu shell (`/.bashrc` o `/.bash_profile`):
    sh
    export KUBECONFIG=$HOME/.kube/config
    
-8. Ejecutar `source ~/.bashrc` para aplicar los cambios.
+6. Ejecutar `source ~/.bashrc` para aplicar los cambios.
 
 # Paso 3: Crear un Node Group
 1. Vuelve a la consola de EKS y selecciona tu cluster.
+   
 2. En la sección "Compute", crea un Node Group con la configuración deseada.
    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/a7ce2b0c-dd79-4f4f-ad3a-36fc768a2d52)
 
-4. Espera a que AWS termine de crear el Node Group y los nodos estén en estado "Ready".
+3. Espera a que AWS termine de crear el Node Group y los nodos estén en estado "Ready".
 
 ### Paso 4: Instalar WordPress con Helm
 1. Crea una instancia de RDS que WordPress usará como base de datos.
 2. Instala WordPress utilizando Helm y configura los valores para conectar con la instancia de RDS:
+   ```bash
    sh
    helm install my-release bitnami/wordpress \
      --set wordpressUsername=admin \
@@ -80,11 +78,12 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
      --set externalDatabase.password=<your-rds-password> \
      --set externalDatabase.database=<your-rds-database-name> \
      --set mariadb.enabled=false
+   ```
    
 3. Verifica que los pods y los PVCs estén funcionando correctamente:
-   sh
-   kubectl get pod
-   kubectl get pvc
+   ```bash
+   sh kubectl get pod kubectl get pvc
+   ```
    
 
 # Paso 5: Configurar DNS y Load Balancer
