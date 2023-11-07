@@ -37,6 +37,37 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
    ```bash
    sh helm repo add bitnami https://charts.bitnami.com/bitnami
    ```
+
+4. Ingresar a `.kube/config` Despues para modificar el archivo: `nano config`
+
+5. Agregar la siguiente configuracion, tener en cuenta agregar el API server endpoint y el Certificate Authority
+
+```bash
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    server: <API_URL>
+    certificate-authority-data: <CERTIFICATE_AUTHORITY>
+  name: eks_CLUSTER_NAME
+contexts:
+- context:
+    cluster: eks_CLUSTER_NAME
+    user: eks_CLUSTER_NAME
+  name: eks_CLUSTER_NAME
+current-context: eks_CLUSTER_NAME
+users:
+- name: eks_CLUSTER_NAME
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      command: aws
+      args:
+        - "eks"
+        - "get-token"
+        - "--cluster-name"
+        - "<CLUSTER_NAME>"
+  ```
    
 4. Configurar `kubectl`:
    - Linux:
