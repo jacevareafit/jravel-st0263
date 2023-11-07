@@ -1,3 +1,11 @@
+Integrantes:
+Kevin Alejandro Sossa Chavarria
+Daniel Jaramillo Valencia
+Antonio Carmona Gaviria
+Jacobo Rave Londoño
+
+# Proyecto2
+Desplegar wordpress en un cluster de kubernetes en AWS
 
 Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar una aplicación de WordPress utilizando AWS y un balanceador de carga hay que crear el cluster EKS, la configuración del entorno local, la instalación de WordPress con Helm y finalmente configurar los registros DNS. 
 
