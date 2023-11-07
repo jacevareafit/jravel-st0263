@@ -39,7 +39,7 @@ Para levantar un cluster de Amazon EKS (Elastic Kubernetes Service) y desplegar 
    ```
    
 4. Configurar `kubectl`:
-   - En sistemas basados en Unix:
+   - Linux:
      ```bash
      sh mkdir -p $HOME/.kube nano $HOME/.kube/config
      ```
