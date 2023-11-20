@@ -114,3 +114,118 @@ We need to set up an AWS S3 bucket to keep the notebooks that we'll generate usi
 ---
 
 
+### Section 3: Edit security groups for the applications
+
+IMPORTANT: The following steps should only be performed once, each time a cluster is created, destroyed or cloned.
+
+1. search for the EMR service.
+    
+    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/fd1ddb66-dda5-4908-bdf0-fa279ab996aa)
+
+    
+2. Select the option **Block public access** Within the Amazon EMR menu.
+    
+    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/7b1fd006-83d2-48a4-ac49-c10f51a5db8c)
+
+    
+3. Select the `Edit` button. In the **Block public access** section select the `Turn off` option and select the `Save` button.
+
+    ![WhatsApp Image 2023-11-18 at 11 11 53 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e1990f9d-e371-4b85-aa94-27d46081d3c0)
+   ![WhatsApp Image 2023-11-18 at 11 12 12 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/73eb74ff-3b2c-4f13-b813-fe36c4363210)
+![WhatsApp Image 2023-11-18 at 11 12 24 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/f678cd72-e5ae-46d2-ae49-28e707237688)
+
+
+4. Go to **Clusters** and select the `Cluster ID` that has the status 'Waiting'. Then select the `Applications` option.
+    
+    ![WhatsApp Image 2023-11-18 at 11 14 31 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/db6b5978-aeee-4afa-867b-d180a0d51005)
+
+    The TCP ports above must be opened, in addition to TCP ports 22, 14000 and 9878. 
+
+5. Search for the EC2 service. Then, go to `Security groups` section.
+    
+   ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/86aa11d0-a198-47ab-b7a8-7643999a9240)
+
+6. Click on the ID of the SG that has the name ‘ElasticMapReduce-master’.
+    
+    ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e2fdba9d-09fd-4cb5-bc86-611fc31593d6)
+
+
+7. Click on `Edit inbound rules`.
+    
+![WhatsApp Image 2023-11-18 at 11 38 49 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/eaf39659-14e8-45dd-9939-c2d2544d8b46)
+
+8. For each of the ports shown in the steps 4, perform the following:
+    - Click on `Add rule`:
+    - Select the `Custom TCP` option, enter the port number and select the 'Anywhere-IPv4' option:
+    - Type the port.
+    - Click on `Save rules` once you have added all.
+
+---
+
+### Section 4: Access to Primary node
+
+1. Within the Amazon EMR menu go to **Clusters** and select the `Cluster ID` that has the create before.
+2. Click on the URL `Connect to the Primary node using SSH` and follow the instructions there. 
+    
+    ![WhatsApp Image 2023-11-18 at 11 57 13 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/0f27161c-d912-4575-b8f9-a3f61fc035a6)
+
+3. A successful SSH connection to the master node of the cluster will look like this:
+    ![WhatsApp Image 2023-11-18 at 12 44 13 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/61630022-7775-44de-a27d-e9b33be07c92)
+
+   
+
+4. You will need to edit the 'hue.ini' file by following these steps: 
+    1. Type the following command in the terminal:
+   
+        ```bash
+        sudo nano /etc/hue/conf/hue.ini
+        ```
+        
+    2. Find the line containing 'webhdfs_url' and change the port. You should put the HDFS Name Node port found in the Applications section over your cluster.
+
+       ![WhatsApp Image 2023-11-18 at 11 14 31 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/cc0c2db0-4e00-4ae8-9591-565fc31eb913)
+
+        As you can see, the selected port must be 9870
+
+        ![WhatsApp Image 2023-11-18 at 12 50 19 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/8a3ba478-b901-488a-b2f3-3bc38b8690a3)
+
+        
+    3. Save the changes over the file.
+    4. Restart the Hue service using the following command:
+        
+        ```bash
+        sudo systemctl restart hue.service
+        ```
+        
+---
+
+### Section 5: Hue service
+
+1. Go to **Clusters** and select the `Cluster ID` that has the status 'Waiting'. Then select the `Applications` option.
+    ![WhatsApp Image 2023-11-18 at 11 11 12 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/bf3ff0aa-3162-4f4e-9cd6-0dc5e83a3331)
+
+    
+2. Select the URL of the 'Hue' field. Then, enter the user 'hadoop' and a password of your choice.
+![WhatsApp Image 2023-11-18 at 12 57 20 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/91ac42ce-aa93-4928-aaf1-01654d1851c3)
+
+ 
+
+
+✅ You just have finished the config of hue services so you can now manage files through Hue for HDFS.
+
+---
+
+### Parte 7: Using JupyterHub
+
+1. Log into the AWS web console and search for the EMR service, select the `Cluster ID` that has the status 'Waiting'; then select the **Applications** option.!
+
+2. Select the URL of the 'JupyterHub' field. Now, enter the user 'jovyan' and password 'jupyter'.
+   [WhatsApp Image 2023-11-18 at 1 01 55 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e525a568-97a6-44cd-a9ae-29c19607cea4)
+   
+3. Select the `New` button and select the `PySpark` option:
+    ![WhatsApp Image 2023-11-18 at 1 03 23 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e0f635b0-c667-4656-bb43-b733fbfce804)
+    
+4. Verify the Spark context variables are installed:
+    ![WhatsApp Image 2023-11-18 at 1 05 01 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/868db71f-d389-4995-a74b-2495ce440c12)
+
+✅ You just have finished the config of JupyterHub services so you can now build PySpark notebooks.
