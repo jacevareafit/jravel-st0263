@@ -72,5 +72,44 @@ We need to set up an AWS S3 bucket to keep the notebooks that we'll generate usi
    ![Screenshot 2023-11-17 182809](https://github.com/jacevareafit/jravel-st0263/assets/68928490/95ebbf38-cc8d-4fdf-8e8b-f910a521db34)
 
 
+5. Leave all the next options as default and go to the **Software settings** section.
+   
+6. Select the `Enter configuration` option and paste the following configuration:
+    
+    ```json
+    [
+      {
+        "Classification": "jupyter-s3-conf",
+        "Properties": {
+          "s3.persistence.enabled": "true",
+          "s3.persistence.bucket": "your_bucket_name"
+        }
+      }
+    ]
+    ```
+    the field s3.persistence.bucket must be name with your bucket name created before.
+   
+![Screenshot 2023-11-17 182914](https://github.com/jacevareafit/jravel-st0263/assets/68928490/9e0a7322-0c24-4afc-9bf8-01dcfbfd7a9d)
+
+7. Go to the section **Security configuration and EC2 key pair** and in the option **Amazon EC2 key pair for SSH to the cluster** choose a custom key or the deafult one.
+    
+   ![Screenshot 2023-11-17 182928](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6f5eefda-181d-494f-b25e-6400357b3b14)
+
+
+8. In the section '**Identity and Access Management (IAM) roles** select these options:
+
+    - **Amazon EMR Service Role**: EMR_DefaultRole
+    - **EC2 Instance Profile for Amazon EMR**: EMR_EC2_DefaultRole
+    - **Custom Auto Scaling Role**: LabRole
+      
+![Screenshot 2023-11-17 182951](https://github.com/jacevareafit/jravel-st0263/assets/68928490/777f2c44-d7a8-4633-a49b-2c99dd941155)
+![Screenshot 2023-11-17 182957](https://github.com/jacevareafit/jravel-st0263/assets/68928490/57aed4b5-56b9-4375-872b-a08a1140a493)
+
+    
+9. Finally, click on `Create cluster`.
+    
+   
+
+---
 
 
