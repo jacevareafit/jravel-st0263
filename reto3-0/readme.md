@@ -52,21 +52,25 @@ We need to set up an AWS S3 bucket to keep the notebooks that we'll generate usi
 
 ### Section 2: AWS EMR cluster creation
 
-1. Go to the AWS web console and search for the EMR service.
+1. Look up for the EMR service.
     
-    <img width="684" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/1ddb76cf-1af7-4bb5-94c7-264f31346247">
+   ![Screenshot 2023-11-17 182502](https://github.com/jacevareafit/jravel-st0263/assets/68928490/87c84303-e19a-4530-b546-b3b23026bd50)
+
     
 2. Click on `Create cluster`.
     
-    <img width="1336" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/d754e8dd-1eab-4d58-9004-40d7d7f8e906">
+   ![Screenshot 2023-11-17 182507](https://github.com/jacevareafit/jravel-st0263/assets/68928490/381dfc9d-3493-416d-a858-59f51265de1d)
 
-3. Enter a name for the cluster, select the version `emr-6.14.0` and select `Custom` in the **Application Bundle** section. Then, select the following applications and enable `Use for Hive table metadata` and `Use for Spark table metadata`.
-    
-    <img width="622" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/a0e26ce1-549e-4d9d-a724-59b176076eb8">
+
+3. Name the cluster, select the version `emr-6.14.0` and select `Custom` in the **Application Bundle** section. Select the following applications and enable both `Use for Hive table metadata` and `Use for Spark table metadata`.
+    ![WhatsApp Image 2023-11-18 at 11 10 13 AM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/7446808a-3bf7-4055-8ee4-41f253708f1d)
+    ![Screenshot 2023-11-17 182645](https://github.com/jacevareafit/jravel-st0263/assets/68928490/2bb82438-96a2-43e9-ad50-43889e3be7b5)
+
     
 4. Edit the **Cluster termination** section and assign termination after a three (3) hour idle time.
     
-    <img width="621" alt="image" src="https://github.com/Jguerra47/jsguerrah-st0263/assets/68879896/8136031e-c371-46a9-8714-a02a8e2fd342">
+   ![Screenshot 2023-11-17 182809](https://github.com/jacevareafit/jravel-st0263/assets/68928490/95ebbf38-cc8d-4fdf-8e8b-f910a521db34)
+
 
 
 
