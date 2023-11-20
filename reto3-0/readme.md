@@ -108,7 +108,8 @@ We need to set up an AWS S3 bucket to keep the notebooks that we'll generate usi
     
 9. Finally, click on `Create cluster`.
     
-   
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/9468f5e5-82bc-4030-b6ce-d2af67cebc00)
+
 
 ---
 
