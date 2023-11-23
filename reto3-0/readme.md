@@ -211,7 +211,7 @@ IMPORTANT: The following steps should only be performed once, each time a cluste
  
 
 
-✅ You just have finished the config of hue services so you can now manage files through Hue for HDFS.
+You just have finished the config of hue services so you can now manage files through Hue for HDFS.
 
 ---
 
@@ -228,4 +228,4 @@ IMPORTANT: The following steps should only be performed once, each time a cluste
 4. Verify the Spark context variables are installed:
     ![WhatsApp Image 2023-11-18 at 1 05 01 PM](https://github.com/jacevareafit/jravel-st0263/assets/68928490/868db71f-d389-4995-a74b-2495ce440c12)
 
-✅ You just have finished the config of JupyterHub services so you can now build PySpark notebooks.
+You just have finished the config of JupyterHub services so you can now build PySpark notebooks.
