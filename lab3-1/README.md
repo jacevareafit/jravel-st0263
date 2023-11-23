@@ -86,7 +86,7 @@ You now have an AWS S3 public bucket.
 Important: If you want to read the files from the public bucket, you can use the following command through the AWS CLI:
 
 ```bash
-aws s3 ls s3://your_bucket
+aws s3 ls s3://your_bucket_name
 ```
 Command to read the previously created bucket
 
@@ -151,10 +151,42 @@ You can now manage files to HDFS from the EMR cluster using the terminal.
 
 ![Screenshot 2023-11-20 160959](https://github.com/jacevareafit/jravel-st0263/assets/68928490/3c385a00-f513-4a57-a127-8f18097b44a9)
 
-6. Select the `Upload` button:
+6. Select the `Upload` button and drop your files:
     
 ![Screenshot 2023-11-20 161008](https://github.com/jacevareafit/jravel-st0263/assets/68928490/efea0070-9591-4a48-9f62-0ac692b9c2b0)
 
 
 You can now upload files to HDFS of the EMR cluster via HUE.
+
+---
+
+### Section 4: File management in S3 with HUE.
+
+1. Follow the last steps to acces Hue
+   
+2. Select the **S3** section, all your buckets must be found there.
+    
+![Screenshot 2023-11-20 161347](https://github.com/jacevareafit/jravel-st0263/assets/68928490/6c3684bb-ad24-4905-9a57-3d367dd1c75e)
+
+3. Select a bucket. Then, click on `Upload` button, `Select Files`; and finally choose the files you want to upload.
+
+![Screenshot 2023-11-20 161341](https://github.com/jacevareafit/jravel-st0263/assets/68928490/afa759f5-b58c-4557-9475-c044f369e3c0)
+![Screenshot 2023-11-20 161347](https://github.com/jacevareafit/jravel-st0263/assets/68928490/5662c3c0-dfc8-480e-afd3-47d13722acbe)
+
+
+7. Verify the file is accesible through other ways like AWS CLI. Execute the next command to list the file over your bucket:
+
+    ```bash
+    aws s3 ls s3://your_bucket_name
+    ```
+
+    Should show the file you uploaded before.
+
+   ![Screenshot 2023-11-20 161412](https://github.com/jacevareafit/jravel-st0263/assets/68928490/0a2a4041-db69-4d04-a8f1-7843f4387347)
+
+
+You can now upload files to an S3 bucket via HUE.
+
+
+
 
