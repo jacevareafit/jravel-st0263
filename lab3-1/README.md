@@ -65,5 +65,96 @@ Steps to follow for a correct develop of the lab 3-1.
 
 9. Download this [example file](https://github.com/st0263eafit/st0263-232/blob/main/bigdata/datasets/airlines.csv) and click the `Download raw file` button:
     
-![Screenshot 2023-11-20 144906](https://github.com/jacevareafit/jravel-st0263/assets/68928490/126964eb-0746-42a7-b852-743e2aa1e658)
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/598edf3b-6a1b-495b-9959-c9a98ca718e2)
+
+10. Return to the main bucket interface, select the name of the previously created bucket and drag the downloaded file into it, then select the `Upload` button.
+
+![Screenshot 2023-11-20 145148](https://github.com/jacevareafit/jravel-st0263/assets/68928490/5c251c11-d17a-440b-8cae-641043ea3aa2)
+
+    
+11. Select the name of the previously uploaded file and then, in the **Properties** section under ****Object overview**** copy the 'Object URL'.
+    
+![Screenshot 2023-11-20 145314](https://github.com/jacevareafit/jravel-st0263/assets/68928490/b3edf480-4db6-41e8-9e1d-752de8ee4d8a)
+
+    
+12. In a browser window paste the previously copied URL leaving aside '/airlines.csv'.
+
+![Screenshot 2023-11-20 150643](https://github.com/jacevareafit/jravel-st0263/assets/68928490/e9d389a9-8d55-40b3-88c6-7a70ea41c882)
+
+You now have an AWS S3 public bucket.
+
+Important: If you want to read the files from the public bucket, you can use the following command through the AWS CLI:
+
+```bash
+aws s3 ls s3://your_bucket
+```
+Command to read the previously created bucket
+
+```bash
+aws s3 ls s3://jravelnotebook2
+```
+  ![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/4c81804d-18ef-4d2e-a2f8-c6dd95540e01)
+
+
+---
+
+### Section 2: File management HDFS with terminal
+
+1. We need to create an AWS EMR cluster, here the guide '[Creating an EMR Cluster](https://github.com/jacevareafit/jravel-st0263/blob/main/lab3-0/readme.md)' for this purpose.
+   
+2. Connect to SSH
+   
+3. After establishing a connection to the primary node we will create a folder called 'gutenberg-small' inside the path '/user/hadoop/datasets' using the following commands:
+
+    1. Create the directory 'datasets' inside the path 'user/hadoop/'.
+   
+    ```bash
+    hdfs dfs -mkdir /user/hadoop/datasets
+    ```
+
+    2. Create the directory 'gutenber-small' inside the path 'user/hadoop/datasets/'.
+   
+    ```bash
+    hdfs dfs -mkdir /user/hadoop/datasets/gutenberg-small
+    ```
+
+    3. List directories and files present in /user/hadoop/ path
+   
+    ```bash
+    hdfs dfs -ls /user/hadoop/datasets
+    ```
+    
+6. To put the contents of a local to the directory '/user/hadoop/datasets/gutenberg-small' use the following command. 
+    
+    ```bash
+    hdfs dfs -put <YOUR_LOCAL_FOLDER> /user/hadoop/datasets/gutenberg-small/
+    ```
+
+You can now manage files to HDFS from the EMR cluster using the terminal.
+
+---
+
+### Section 3: File management in HDFS with HUE
+
+1. Search for the EMR service.
+   
+![image](https://github.com/jacevareafit/jravel-st0263/assets/68928490/8bb5ecc3-4bfc-4ea9-ab98-a2f0c7bbf81b)
+
+2. Select the 'Cluster ID' that has the status 'Waiting'; then select the **Applications** option.
+3. Select the URL of the **Hue** field and enter the 'hadoop' user and a password.
+4. Select the **Files** section:
+   
+![Screenshot 2023-11-20 160724](https://github.com/jacevareafit/jravel-st0263/assets/68928490/c89d52f4-d8ad-4845-8bc3-bf98b3d7aff0)
+
+
+5. If you have been following the previous steps right, you must found the folder **gutenberg-small**. Otherwise, create the folder in `New` button:
+
+![Screenshot 2023-11-20 160959](https://github.com/jacevareafit/jravel-st0263/assets/68928490/3c385a00-f513-4a57-a127-8f18097b44a9)
+
+6. Select the `Upload` button:
+    
+![Screenshot 2023-11-20 161008](https://github.com/jacevareafit/jravel-st0263/assets/68928490/efea0070-9591-4a48-9f62-0ac692b9c2b0)
+
+
+You can now upload files to HDFS of the EMR cluster via HUE.
 
