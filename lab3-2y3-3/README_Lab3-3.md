@@ -60,6 +60,36 @@ We will have to create an AWS Redshift cluster.
    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/293a0a95-24a0-4737-ad61-f5158827be70">
 
 
+### Section 2: Execute basic queries in the 'tickit' demo database
+
+1. Wait until the cluster is available and click the list menu `Query data` and click the option `Query in query editor v2`
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/5d8e0e21-2658-4c36-86ff-084068d2c011">
+
+2. To connect to the database click the option `Database username and password` and fill the blanks with the credentians given above (Section 1, step 5)
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/960339a6-ba99-4e91-87c5-59be8a476535">
+
+3. Enter to the `sample_data_dev` folder and click the `tickit open samples queries` and click create
+
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/7a866529-4659-4142-a793-0867529c9a59">
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/5c518c64-835e-4d80-83c5-f9ff3d851b7f">
+
+4.  Run the samples queries
+   
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/93d87ccd-1ff1-4d23-a298-9e9ff8ad0e41">
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/4e24efb0-8d87-4dac-8a79-2d9f1412a482">
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/5057b7fe-9dda-4250-9fff-7b51ce10f08f">
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/be010870-54d8-4b3b-abdd-51949e6cb020">
+
+
+
+
+
+
+   
+
+
    
 
 
