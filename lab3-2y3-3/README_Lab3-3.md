@@ -16,7 +16,7 @@ Store Data from the course dataset in a Datawarehouse and be able to fetch that 
 
 - [x] Creation of an AWS redshift cluster.
 - [x] Execute basic queries in the 'tickit' demo database
-- [x] Create an IAM role for Amazon Redshift and run queries to create an external database
+- [x] Create an IAM role for Amazon Redshift and run queries to create an external database in AWS s3 bucket
 - [x] Creation of an ERM cluster an store data with hive
 
 ---
@@ -60,6 +60,7 @@ We will have to create an AWS Redshift cluster.
    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/293a0a95-24a0-4737-ad61-f5158827be70">
 
 
+
 ### Section 2: Execute basic queries in the 'tickit' demo database
 
 1. Wait until the cluster is available and click the list menu `Query data` and click the option `Query in query editor v2`
@@ -84,13 +85,43 @@ We will have to create an AWS Redshift cluster.
 
 
 
+### Section 3: Create an IAM role for Amazon Redshift and run queries to create an external database  in AWS s3 bucket
 
+1. Log in to the AWS console and search for the IAM Redshift service.
 
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/6803f07b-6daa-4aae-8b50-97a6c9c9e6e5">
 
+2. Select the left panel, choose Roles and click `Create role`.
    
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/b0d037bb-dfca-4f2e-9520-90d97d3d9845">
+
+2. Choose AWS service then choose Redshift. pick `choose Redshift - Customizable` and click next.
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/57554cbd-0f3b-4d4c-96fa-83e2b7da52bc">
+      
+3. The Attach permissions policy page will appear, add AmazonS3ReadOnlyAccess, AWSGlueConsoleFullAccess and AmazonAthenaFullAcces and click next.
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/173988a6-d018-4b84-9e26-b89ced4b44c2">
+
+4. In Role name, enter `myspectrum_role`, review information, then Create role.
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/9bef2035-da9b-4844-9c12-55f9a9d14aaf">
+
+5. Choose the role you just created and then copy the Role ARN to the clipboard. This ARN will be used when you create the external table in
+Amazon S3. Important: In the AWS Academy account, it DOES NOT ALLOW YOU TO CREATE Users, Groups, or Roles, so you will get this error so you will get this error:
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/bd2d0f24-d1aa-451b-94c4-b99e5af77419">
+
+But for the purpose of creating the external table in Redshift Spectrum, you can use the default Role: 'LabRole'.
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/90846c31-dc37-4f92-a1f0-f50e207012e0">
 
 
-   
+
+
+
+
+
 
 
 
