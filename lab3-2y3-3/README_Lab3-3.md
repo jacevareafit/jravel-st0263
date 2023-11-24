@@ -5,7 +5,7 @@
 | --- | --- |
 | Course name | Tópicos especiales en Telemática |
 | Course ID | ST0263 |
-| Name | Juan Sebastian Guerra Hernandez (jsguerrah@eafit.edu.co) |
+| Name | Jacobo Rave Londoño (jravel@eafit.edu.co) |
 | Teacher | Edwin Nelson Montoya Munera (emontoya@eafit.edu.co) |
 
 # 1. Main goal
@@ -29,7 +29,7 @@ Steps to follow for a correct catalog of the data.
 
 ---
 
-### Section 1: Creation of an AWS redshift cluster.
+## Section 1: Creation of an AWS redshift cluster.
 
 We will have to create an AWS Redshift cluster.
 
@@ -61,7 +61,7 @@ We will have to create an AWS Redshift cluster.
 
 
 
-### Section 2: Execute basic queries in the 'tickit' demo database
+## Section 2: Execute basic queries in the 'tickit' demo database
 
 1. Wait until the cluster is available and click the list menu `Query data` and click the option `Query in query editor v2`
 
@@ -85,7 +85,7 @@ We will have to create an AWS Redshift cluster.
 
 
 
-### Section 3: Create an IAM role for Amazon Redshift and run queries to create an external database  in AWS s3 bucket
+## Section 3: Create an IAM role for Amazon Redshift and run queries to create an external database  in AWS s3 bucket
 
 1. Log in to the AWS console and search for the IAM Redshift service.
 
@@ -128,9 +128,22 @@ But for the purpose of creating the external table in Redshift Spectrum, you can
 
    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/38f1bd35-b01a-4fda-b0e2-fe5eed37c2cf">
 
+10. Remember to pause or delete the cluster if you are not going to work anymore because you will still be charged even after finishing the aws lab.
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/ae6029da-b9a4-4431-88f0-93c7bec38d34">
+
+
+
 You can now query your data!
 
 
+## Section 4: Creation of an ERM cluster an store data with hive 
+
+1. Create an ERM cluster, here is the [guide](https://github.com/jacevareafit/jravel-st0263/tree/main/lab3-0)
+
+2. connect to the primary node with ssh, here is the [guide](https://github.com/jacevareafit/jravel-st0263/tree/main/lab3-0)
+
+3. 
 
 
    
