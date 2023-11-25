@@ -122,11 +122,23 @@ But for the purpose of creating the external table in Redshift Spectrum, you can
 
 8. Create a table with external data in S3
 
-   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/0fcf9415-b663-4ce3-bbe9-8f17c8879338">
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/2219eece-c2b5-436b-8d25-587c42136385">
 
 9. Query data
 
-   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/38f1bd35-b01a-4fda-b0e2-fe5eed37c2cf">
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/5eb35828-baa7-49c7-b226-370af141a8c6">
+
+10. You can create a native table in redshit to combine it with the external table
+
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/36f6ca7d-b698-4971-8c80-2aef9290df26">
+
+11. Then we can load the data in the new table ‘event2’
+
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/7b9a0f2e-0916-4951-a2c9-5e50353de19d">
+
+12. Then we can query on the native an external tables
+
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/c820234d-9200-4a80-a4ee-39b4ce3782bf">
 
 10. Remember to pause or delete the cluster if you are not going to work anymore because you will still be charged even after finishing the aws lab.
 
