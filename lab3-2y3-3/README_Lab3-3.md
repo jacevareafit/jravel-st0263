@@ -116,7 +116,7 @@ But for the purpose of creating the external table in Redshift Spectrum, you can
 
    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/90846c31-dc37-4f92-a1f0-f50e207012e0">
 
-7. Create the external database
+7. In the Query editor v2 we are going to create the external database but firts we have to load this [dataset](https://github.com/st1800eafit/st1800-232/tree/main/datasets) in our s3 bucket then we can proceed to create the database.
 
    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/2c18cede-bf8b-4d66-ae3f-45862da51a56">
 
