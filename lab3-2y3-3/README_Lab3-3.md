@@ -141,15 +141,30 @@ You can now query your data!
 
 1. Create an ERM cluster, here is the [guide](https://github.com/jacevareafit/jravel-st0263/tree/main/lab3-0)
 
-2. connect to the primary node with ssh, here is the [guide](https://github.com/jacevareafit/jravel-st0263/tree/main/lab3-0)
+2. Connect to the primary node with ssh, here is the [guide](https://github.com/jacevareafit/jravel-st0263/tree/main/lab3-0)
 
-3. 
+3. We are going to use beeline which is used to connect to Hive running on the EMR cluster and run HiveQL querie. Here is how you can [connect](https://sparkbyexamples.com/apache-hive/connect-to-hive-using-beeline/) to it
 
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/96ce47cb-b58c-4729-9dcb-a21d23a764d4">
 
-   
+4. you can see all tha tables you have created
 
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/7c6c2f0a-6147-438a-8e7f-4680f6bcb566">
 
+5. Create HDI table in EMR/S3/Hue/Hive
 
+    #external table in S3:
+    
+    `CREATE EXTERNAL TABLE <your_table_name> (your_data example:id INT) 
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+    STORED AS TEXTFILE 
+    LOCATION 's3://your_s3bucket/'`
+
+    <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/353e364a-e01d-4433-8051-d69e6a0aedc3">
+
+6. Now you can query your data
+
+   <img width="820" alt="image" src="https://github.com/jacevareafit/jravel-st0263/assets/68928490/94c62a8f-2de9-4737-a2d0-51297e8faafb">
 
 
    
